@@ -61,6 +61,7 @@ NOTE: This is primarily intended as a thought experiment, but if it is useful to
   }
 }
 ```
+![Example Image 1](images/example1.png)
 
 ### Example 2: Portrait of a Person
 ```json
@@ -90,6 +91,7 @@ NOTE: This is primarily intended as a thought experiment, but if it is useful to
   }
 }
 ```
+![Example Image 2](images/example2.png)
 
 ## Usage
 To validate a PromptJSON file, run the `promptscript_validator.py` script with the JSON file as an argument:
