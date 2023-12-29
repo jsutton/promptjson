@@ -1,0 +1,15 @@
+{
+    "Scene": "A tranquil mountain range at sunset",
+    "Subjects": {
+      "Main": ["mountains"],
+      "Secondary": ["lake", "forest"]
+    },
+    "Attributes": {
+      "Style": "realistic",
+      "Mood": "peaceful",
+      "ColorScheme": "warm colors"
+    },
+    "Constraints": {
+      "Dimensions": "1920x1080"
+    }
+  }

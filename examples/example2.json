@@ -1,0 +1,25 @@
+{
+    "Scene": "Elegant portrait of a person in a Victorian setting",
+    "Subjects": {
+      "Main": ["person"],
+      "Secondary": ["vintage armchair", "ornate wallpaper"]
+    },
+    "Attributes": {
+      "Style": "classical painting",
+      "Mood": "sophisticated",
+      "ColorScheme": "rich, muted colors"
+    },
+    "Constraints": {
+      "Dimensions": "800x1000",
+      "AspectRatio": "4:5"
+    },
+    "Options": {
+      "PersonDetails": {
+        "Gender": "female",
+        "Age": "early 30s",
+        "Clothing": "Victorian dress",
+        "Expression": "thoughtful"
+      },
+      "Lighting": "soft, from the left"
+    }
+  }

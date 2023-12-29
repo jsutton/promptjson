@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PromptJSON",
+    "type": "object",
+    "properties": {
+      "Scene": {
+        "type": "string",
+        "description": "Description of the image setting or environment."
+      },
+      "Subjects": {
+        "type": "object",
+        "properties": {
+          "Main": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "Secondary": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "description": "Main and secondary subjects in the image."
+      },
+      "Attributes": {
+        "type": "object",
+        "properties": {
+          "Style": { "type": "string" },
+          "Mood": { "type": "string" },
+          "ColorScheme": { "type": "string" }
+        },
+        "description": "Artistic attributes of the image."
+      },
+      "Constraints": {
+        "type": "object",
+        "properties": {
+          "Dimensions": { "type": "string" },
+          "AspectRatio": { "type": "string" }
+        },
+        "description": "Specific requirements for the image."
+      },
+      "Options": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Additional optional settings."
+      }
+    },
+    "required": ["Scene", "Subjects"]
+  }
+  
