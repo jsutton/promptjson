@@ -8,55 +8,66 @@ NOTE: This is primarily intended as a thought experiment, but if it is useful to
 
 ## Schema Details
 
-### 1. Scene
+### Image
+The root object of PromptJSON that contains all the details for generating an image.
+
+#### version
 - **Type**: String
-- **Description**: Description of the image setting or environment.
+- **Description**: Version of the PromptJSON schema.
 - **Required**: Yes
 
-### 2. Subjects
-- **Type**: Object
-- **Description**: Specifies main and secondary subjects in the image.
-- **Properties**:
-  - **Main**: Array of strings for primary subjects.
-  - **Secondary**: Array of strings for secondary subjects.
+#### Prompts
+- **Type**: Array
+- **Description**: An array of objects that describe individual image prompts, each with a "Prompt" and optional "Attributes".
 - **Required**: Yes
 
-### 3. Attributes
+##### Prompt
+- **Type**: String
+- **Description**: String describing the scene and subjects, optionally with weights.
+- **Pattern**: "^(.*?)(::\\d+)?$"
+- **Required**: Yes
+
+##### Attributes
 - **Type**: Object
-- **Description**: Artistic attributes of the image.
+- **Description**: Artistic attributes of the image, including additional optional settings for nuanced control.
 - **Properties**:
   - **Style**: String for artistic style.
   - **Mood**: String for mood of the image.
   - **ColorScheme**: String for primary colors.
+- **AdditionalProperties**: True
 
-### 4. Constraints
-- **Type**: Object
-- **Description**: Specific requirements for the image.
-- **Properties**:
-  - **Dimensions**: String for size (e.g., "1024x768").
-  - **AspectRatio**: String for aspect ratio (e.g., "16:9").
+#### AspectRatio
+- **Type**: String
+- **Description**: String for aspect ratio (e.g., '16:9').
+- **Required**: No
 
-### 5. Options
-- **Type**: Object
-- **Description**: Additional optional settings for nuanced control.
-- **Properties**: Flexible for any additional parameters.
+#### Style
+- **Type**: String
+- **Description**: Overall style of the image.
+- **Required**: No
+
+#### Dimensions
+- **Type**: String
+- **Description**: Specific dimensions for the image.
+- **Required**: No
 
 ## Examples
 
 ### Example 1: Simple Landscape
 ```json
 {
-  "Scene": "A tranquil mountain range at sunset",
-  "Subjects": {
-    "Main": ["mountains"],
-    "Secondary": ["lake", "forest"]
-  },
-  "Attributes": {
-    "Style": "realistic",
-    "Mood": "peaceful",
-    "ColorScheme": "warm colors"
-  },
-  "Constraints": {
+  "Image": {
+    "version": "6.0",
+    "Prompts": [
+      {
+        "Prompt": "A tranquil mountain range at sunset",
+        "Attributes": {
+          "Style": "realistic",
+          "Mood": "peaceful",
+          "ColorScheme": "warm colors"
+        }
+      }
+    ],
     "Dimensions": "1920x1080"
   }
 }
@@ -66,28 +77,28 @@ NOTE: This is primarily intended as a thought experiment, but if it is useful to
 ### Example 2: Portrait of a Person
 ```json
 {
-  "Scene": "Elegant portrait of a person in a Victorian setting",
-  "Subjects": {
-    "Main": ["person"],
-    "Secondary": ["vintage armchair", "ornate wallpaper"]
-  },
-  "Attributes": {
-    "Style": "classical painting",
-    "Mood": "sophisticated",
-    "ColorScheme": "rich, muted colors"
-  },
-  "Constraints": {
-    "Dimensions": "800x1000",
+  "Image": {
+    "version": "1.0",
+    "Prompts": [
+      {
+        "Prompt": "Elegant portrait of a person in a Victorian setting",
+        "Attributes": {
+          "Style": "classical painting",
+          "Mood": "sophisticated",
+          "ColorScheme": "rich, muted colors"
+        },
+        "Options": {
+          "PersonDetails": {
+            "Gender": "female",
+            "Age": "early 30s",
+            "Clothing": "Victorian dress",
+            "Expression": "thoughtful"
+          },
+          "Lighting": "soft, from the left"
+        }
+      }
+    ],
     "AspectRatio": "4:5"
-  },
-  "Options": {
-    "PersonDetails": {
-      "Gender": "female",
-      "Age": "early 30s",
-      "Clothing": "Victorian dress",
-      "Expression": "thoughtful"
-    },
-    "Lighting": "soft, from the left"
   }
 }
 ```

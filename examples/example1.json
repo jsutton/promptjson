@@ -1,15 +1,25 @@
 {
-    "Scene": "A tranquil mountain range at sunset",
-    "Subjects": {
-      "Main": ["mountains"],
-      "Secondary": ["lake", "forest"]
-    },
-    "Attributes": {
-      "Style": "realistic",
-      "Mood": "peaceful",
-      "ColorScheme": "warm colors"
-    },
-    "Constraints": {
-      "Dimensions": "1920x1080"
-    }
+  "Image": {
+    "version": "6.0",
+    "Prompts": [
+      {
+        "Prompt": "A tranquil mountain range at sunset::",
+        "Attributes": {
+          "Style": "realistic",
+          "Mood": "peaceful",
+          "ColorScheme": "warm colors"
+        }
+      },
+      {
+        "Prompt": "A forest at sunset",
+        "Attributes": {
+          "Style": "realistic",
+          "Mood": "peaceful",
+          "ColorScheme": "cool colors"
+        }
+      }
+    ],
+    "Dimensions": "1920x1080",
+    "Style": "Blended"
   }
+}

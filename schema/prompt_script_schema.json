@@ -3,47 +3,53 @@
     "title": "PromptJSON",
     "type": "object",
     "properties": {
-      "Scene": {
-        "type": "string",
-        "description": "Description of the image setting or environment."
-      },
-      "Subjects": {
+      "Image": {
         "type": "object",
         "properties": {
-          "Main": {
-            "type": "array",
-            "items": { "type": "string" }
+          "version": {
+            "type": "string",
+            "description": "Version of the PromptJSON schema."
           },
-          "Secondary": {
+          "Prompts": {
             "type": "array",
-            "items": { "type": "string" }
+            "items": {
+              "type": "object",
+              "properties": {
+                "Prompt": {
+                  "type": "string",
+                  "pattern": "^(.*?)(::\\d+)?$",
+                  "description": "String describing the scene and subjects, optionally with weights."
+                },
+                "Attributes": {
+                  "type": "object",
+                  "properties": {
+                    "Style": { "type": "string" },
+                    "Mood": { "type": "string" },
+                    "ColorScheme": { "type": "string" }
+                  },
+                  "additionalProperties": true,
+                  "description": "Artistic attributes of the image, including additional optional settings for nuanced control."
+                }
+              },
+              "required": ["Prompt"]
+            }
+          },
+          "AspectRatio": {
+            "type": "string",
+            "description": "String for aspect ratio (e.g., '16:9')."
+          },
+          "Style": {
+            "type": "string",
+            "description": "Overall style of the image."
+          },
+          "Dimensions": {
+            "type": "string",
+            "description": "Specific dimensions for the image."
           }
         },
-        "description": "Main and secondary subjects in the image."
-      },
-      "Attributes": {
-        "type": "object",
-        "properties": {
-          "Style": { "type": "string" },
-          "Mood": { "type": "string" },
-          "ColorScheme": { "type": "string" }
-        },
-        "description": "Artistic attributes of the image."
-      },
-      "Constraints": {
-        "type": "object",
-        "properties": {
-          "Dimensions": { "type": "string" },
-          "AspectRatio": { "type": "string" }
-        },
-        "description": "Specific requirements for the image."
-      },
-      "Options": {
-        "type": "object",
-        "additionalProperties": true,
-        "description": "Additional optional settings."
+        "required": ["Prompts"]
       }
     },
-    "required": ["Scene", "Subjects"]
+    "required": ["Image"]
   }
-  
+
